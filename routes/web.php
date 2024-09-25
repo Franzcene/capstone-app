@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/home', function() {
@@ -27,6 +28,9 @@ Route::middleware('auth')->group(function () {
 // Route::get('/products/create', [ProductController::class, 'create']);
 // Route::post('/products', [ProductController::class,'store']);
 // Route::delete('/products{product}', [ProductController::class, 'destroy']);
+
+Route::resource('users', UserController::class);
+
 
 Route::resource('products', ProductController::class);
 require __DIR__.'/auth.php';
