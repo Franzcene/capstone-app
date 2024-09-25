@@ -10,9 +10,9 @@
 <body>
     <x-header></x-header>
     <x-sidebar></x-sidebar>
-    
-    
-    <main id="main" class="main">  
+
+
+    <main id="main" class="main">
         <section class="section">
           <div class="row flex justify-center">
             <div class="col-lg-10">
@@ -48,10 +48,10 @@
                             <td>{{$product->quantity}}</td>
                             <td>
                                 <a href="/products/{{$product->id}}/edit" class="btn btn-warning">Edit</a>
-                                <a href="#" onclick="event.preventDefault(); document.getElementById('delete-product-{{$product->id}}-form.submit(); "></a>
-                                <form  method="POST" style="display: inline;" id="delete-product-{{$product->id}}-form" action="/products">
+                                <form action="/products/{{$product->id}}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">Delete</button>
                                 </form>
                             </td>
                         </tr>
