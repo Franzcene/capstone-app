@@ -1,15 +1,35 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Order;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::paginate(10); // Adjust the number as needed
+        $orders = Order::all();
         return view('orders.index', compact('orders'));
+    }
+
+    public function processing()
+    {
+        $orders = Order::where('status', 'processing')->get();
+        return view('orders.index', compact('orders'));
+    }
+
+    public function notifications()
+    {
+        // Logic for customer notifications
+        $orders = Order::where('status', 'processing')->get();
+        return view('orders.notifications', compact('orders'));
+    }
+
+    public function statusUpdate()
+    {
+        // Logic for status update
+        $orders = Order::all();
+        return view('orders.status-update', compact('orders'));
     }
 
     public function show(Order $order)
@@ -24,9 +44,9 @@ class OrderController extends Controller
         ]);
 
         $order->update([
-            'status' => $request->input('status'),
+            'status' => $request->status,
         ]);
 
-        return redirect()->route('orders.show', $order)->with('success', 'Order status updated successfully.');
+        return redirect()->route('orders.index')->with('success', 'Order status updated successfully.');
     }
 }

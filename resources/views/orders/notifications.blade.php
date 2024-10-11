@@ -7,13 +7,7 @@
             <div class="col-lg-10">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Orders</h5>
-                        <div class="mb-3">
-                            <a href="{{ route('orders.index') }}" class="btn btn-primary">All Orders</a>
-                            <a href="{{ route('orders.processing') }}" class="btn btn-secondary">Order Processing</a>
-                            <a href="{{ route('orders.notifications') }}" class="btn btn-secondary">Customer Notifications</a>
-                            <a href="{{ route('orders.status-update') }}" class="btn btn-secondary">Status Update</a>
-                        </div>
+                        <h5 class="card-title">Customer Notifications</h5>
                         <table class="table">
                             <thead>
                                 <tr>
